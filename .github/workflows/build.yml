@@ -44,6 +44,20 @@ jobs:
         git clean -df
         gclient sync -D --force --reset --with_branch_heads --no-history
 
+    - name: Configure Git
+      run: |
+        git config user.name "meta-atman"
+        git config user.email "5810000@gmail.com"
+
+    - name: Add WebRTC source to repository
+      run: |
+        git add webrtc
+        git commit -m "Add WebRTC source and dependencies for ${{ github.ref_name }}"
+
+    - name: Push new branch
+      run: |
+        git push origin ${{ github.ref_name }}
+    
     - name: Build WebRTC
       env:
         PATH: ${{ env.PATH }}
