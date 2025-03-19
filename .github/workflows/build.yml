@@ -55,7 +55,7 @@ jobs:
       run: |
         git add webrtc
         git commit -m "Add WebRTC source and dependencies for ${{ github.ref_name }}"
-        git push origin
+        git push origin main
     
     - name: Build WebRTC
       env:
